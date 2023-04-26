@@ -15,6 +15,9 @@ spec:
   source:
     git:
       url: {{ $component.git.url }}
+      {{- if $component.git.context }}
+      context: {{ $component.git.context }}
+      {{- end }}
       {{- if $component.git.dockerfileUrl }}
       dockerfileUrl: {{ $component.git.dockerfileUrl }}
       {{- end }}
