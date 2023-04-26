@@ -1,0 +1,22 @@
+workspace: ergonzale-tenant
+
+application:
+  name: hello-secret
+  description: "Hello World app for demo about Sealed Secrets"
+  displayName: "hello-secret"
+
+components:
+  - name: hello-secret
+    pacProvision: true
+    targetPort: 3000
+    imageName: hello-secret
+    git:
+      url: https://github.com/ernesgonzalez33/hello-secret
+      dockerfileUrl: "./Dockerfile"
+  - name: component-2 # Dummy component
+    pacProvision: false
+    targetPort: 8080
+    imageName: component-2
+    git:
+      url: https://github.com/ernesgonzalez33/component-2
+      devfileUrl: "./devfile"

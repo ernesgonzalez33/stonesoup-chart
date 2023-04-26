@@ -1,0 +1,24 @@
+{{ range $component := .Values.components }}
+apiVersion: appstudio.redhat.com/v1alpha1
+kind: Component
+metadata:
+  name: {{ $component.name }}
+  {{- if $component.pacProvision }}
+  annotations:
+    appstudio.openshift.io/pac-provision: request
+  {{- end}}
+spec:
+  componentName: {{ $component.name }}
+  application: {{ $.Values.application.name }}
+  targetPort: {{ $component.targetPort }}
+  containerImage: quay.io/redhat-appstudio/user-workload:{{ $.Values.workspace }}-{{ $component.imageName }}
+  source:
+    git:
+      url: {{ $component.git.url }}
+      {{- if $component.git.dockerfileUrl }}
+      dockerfileUrl: {{ $component.git.dockerfileUrl }}
+      {{- end }}
+      {{- if $component.git.devfileUrl }}
+      devfileUrl: {{ $component.git.devfileUrl }}
+      {{- end }}
+{{ end }}
