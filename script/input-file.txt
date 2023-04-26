@@ -1,0 +1,2 @@
+https://github.com/ernesgonzalez33/hello-secret
+https://github.com/ernesgonzalez33/bookinfo-charts
