@@ -8,5 +8,5 @@ file=$1
 while read line; do
     appName=${line##*/}
     sed -e "s/appName/$appName/g" -e "s@appUrl@$line@" values.yaml > values-$appName.yaml
-    helm template .. -f values-$appName.yaml # | oc apply -f -
+    helm template .. -f values-$appName.yaml | oc apply -f -
 done < $file
