@@ -9,7 +9,6 @@ components:
   - name: appName
     pacProvision: true
     targetPort: 3000
-    imageName: appName
     git:
       url: appUrl
       dockerfileUrl: "./Dockerfile"
